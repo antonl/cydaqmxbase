@@ -1,0 +1,6 @@
+*.pyc
+nidaqmxbase/*/*.c
+build
+*.so
+*.pyd
+*.swp
