@@ -4,7 +4,7 @@
 # Cython Imports
 #-----------------------------------------------------------------------------
 
-from libnidaqmxbase import TaskHandle
+from libnidaqmxbase cimport TaskHandle
 
 #-----------------------------------------------------------------------------
 # Declaration

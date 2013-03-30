@@ -4,10 +4,10 @@
 # Cython imports
 #-----------------------------------------------------------------------------
 
-from nidaqmqbase.core.libnidaqmxbase import int32
+from nidaqmxbase.core.libnidaqmxbase cimport int32
 
 #-----------------------------------------------------------------------------
 # Declaration
 #-----------------------------------------------------------------------------
 
-cdef inline void wrap_error(int32 error);
+cdef inline void wrap_error(int32 error)

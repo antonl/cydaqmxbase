@@ -30,7 +30,18 @@ for submod, packages in submodules.items():
         )
         extensions.append(ext)
 
+def find_packages():
+    packages = []
+    for dir, subdir, files in os.walk('nidaqmxbase'):
+        package = dir.replace(os.path.sep, '.')
+        if '__init__.py' not in files:
+            continue
+        packages.append(package)
+    return packages
+
 setup(
+    name = "cydaqmxbase",
+    packages = find_packages(),
     cmdclass = {'build_ext': build_ext},
     ext_modules = extensions
 )

@@ -4,7 +4,9 @@
 # Cython Imports
 #-----------------------------------------------------------------------------
 
-from nidaqmxbase.core.libnidaqmxbase cimport TaskHandle, DAQmxBaseCreateTask, DAQmxStopTask, DAQmxClearTask
+from nidaqmxbase.core.libnidaqmxbase cimport (
+    TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStopTask, DAQmxBaseClearTask
+)
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 #-----------------------------------------------------------------------------
@@ -13,8 +15,7 @@ from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 cdef class Task:
     def __cinit__(self, const char taskName[]=""):
-        #cdef TaskHandle taskHandle
-        cdef int taskHandle
+        cdef TaskHandle taskHandle
         wrap_error(DAQmxBaseCreateTask(taskName, &taskHandle))
         self.handle = taskHandle
 
@@ -22,5 +23,5 @@ cdef class Task:
         pass
 
     def __dealloc__(self):
-        wrap_error(DAQmxStopTask(self.handle))
-        wrap_error(DAQmxClearTask(self.handle))
+        wrap_error(DAQmxBaseStopTask(self.handle))
+        wrap_error(DAQmxBaseClearTask(self.handle))
