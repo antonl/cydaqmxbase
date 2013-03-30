@@ -6,18 +6,18 @@
 
 cdef extern from "NIDAQmxBase.h":
     # NI-DAQmx Typedefs
-    ctypedef signed char int8 "int8"
-    ctypedef unsigned char uInt8 "uInt8"
-    ctypedef signed short int16 "int16"
-    ctypedef unsigned short uInt16 "uInt16"
-    ctypedef signed long int32 "int32"
-    ctypedef unsigned long uInt32 "uInt32"
-    ctypedef float float32 "float32"
-    ctypedef double float64 "float64"
-    ctypedef long long int64 "int64"
-    ctypedef unsigned long long uInt64 "uInt64"
-    ctypedef uInt32 bool32 "bool32"
-    ctypedef uInt32 TaskHandle "TaskHandle"
+    ctypedef signed char int8
+    ctypedef unsigned char uInt8
+    ctypedef signed short int16
+    ctypedef unsigned short uInt16
+    ctypedef signed long int32
+    ctypedef unsigned long uInt32
+    ctypedef float float32
+    ctypedef double float64
+    ctypedef long long int64
+    ctypedef unsigned long long uInt64
+    ctypedef uInt32 bool32
+    ctypedef uInt32 TaskHandle
 
     # Task Configuration/Control
     int32 DAQmxBaseLoadTask (const char taskName[], TaskHandle *taskHandle)
