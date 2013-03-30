@@ -4,6 +4,8 @@
 # Import the C header files
 #-----------------------------------------------------------------------------
 
+cdef inline int DAQmxFailed(int error): return (error != 0)
+
 cdef extern from "NIDAQmxBase.h":
     # NI-DAQmx Typedefs
     ctypedef signed char int8
@@ -88,3 +90,7 @@ cdef extern from "NIDAQmxBase.h":
     # Device Functions
     #int32 DAQmxBaseGetDevSerialNum (const char device[], uInt32 *data)
 
+    # Error codes
+    enum:
+        DAQmxSuccess                                                        # 0
+        DAQmxErrorInvalidInstallation                                       # -200683
