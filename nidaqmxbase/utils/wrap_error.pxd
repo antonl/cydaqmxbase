@@ -10,4 +10,4 @@ from nidaqmxbase.core.libnidaqmxbase cimport int32
 # Declaration
 #-----------------------------------------------------------------------------
 
-cdef inline void wrap_error(int32 error)
+cdef void wrap_error(int32 error)
