@@ -6,6 +6,23 @@ from Cython.Distutils import build_ext
 
 import os
 
+#-----------------------------------------------------------------------------
+# Packages
+#-----------------------------------------------------------------------------
+
+def find_packages():
+    packages = []
+    for dir, subdir, files in os.walk('nidaqmxbase'):
+        package = dir.replace(os.path.sep, '.')
+        if '__init__.py' not in files:
+            continue
+        packages.append(package)
+    return packages
+
+#-----------------------------------------------------------------------------
+# Extensions
+#-----------------------------------------------------------------------------
+
 def pxd(subdir, name):
     return os.path.abspath(os.path.join('nidaqmxbase', subdir, name+'.pxd'))
 
@@ -30,18 +47,20 @@ for submod, packages in submodules.items():
         )
         extensions.append(ext)
 
-def find_packages():
-    packages = []
-    for dir, subdir, files in os.walk('nidaqmxbase'):
-        package = dir.replace(os.path.sep, '.')
-        if '__init__.py' not in files:
-            continue
-        packages.append(package)
-    return packages
+#-----------------------------------------------------------------------------
+# Include directories
+#-----------------------------------------------------------------------------
+
+includes = [os.path.normpath('/usr/local/natinst/nidaqmxbase/include')]
+
+#-----------------------------------------------------------------------------
+# Setup
+#-----------------------------------------------------------------------------
 
 setup(
     name = "cydaqmxbase",
     packages = find_packages(),
     cmdclass = {'build_ext': build_ext},
-    ext_modules = extensions
+    ext_modules = extensions,
+    include_dirs = includes
 )
