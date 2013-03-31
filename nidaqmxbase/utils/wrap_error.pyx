@@ -9,13 +9,13 @@ from nidaqmxbase.core.libnidaqmxbase cimport (
 )
 
 #-----------------------------------------------------------------------------
-# Coding
+# Code
 #-----------------------------------------------------------------------------
 
 cdef inline void wrap_error(int32 error):
-    char errBuff[2048];
+    cdef char errBuff[2048]
 
     if (DAQmxFailed(error)):
-        DAQmxBaseGetExtendedErrorInfo(errBuff, 2048);
-        print "DAQmxBase Error %ld: %s" % (error, errBuff);
-        return 0;
+        DAQmxBaseGetExtendedErrorInfo(errBuff, 2048)
+        print "DAQmxBase Error %ld: %s" % (error, errBuff)
+        # TODO: raise error

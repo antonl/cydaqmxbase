@@ -30,19 +30,19 @@ cdef extern from "NIDAQmxBase.h":
     int32 DAQmxBaseIsTaskDone (TaskHandle taskHandle, bool32 *isTaskDone)
 
     # Channel Configuration/Creation
-    #int32 DAQmxBaseCreateAIVoltageChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], int32 terminalConfig, float64 minVal, float64 maxVal, int32 units, const char customScaleName[])
-    #int32 DAQmxBaseCreateAIThrmcplChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 thermocoupleType, int32 cjcSource, float64 cjcVal, const char cjcChannel[]);
-    #int32 DAQmxBaseCreateAOVoltageChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, const char customScaleName[]);
-    #int32 DAQmxBaseCreateDIChan (TaskHandle taskHandle, const char lines[], const char nameToAssignToLines[], int32 lineGrouping)
-    #int32 DAQmxBaseCreateDOChan (TaskHandle taskHandle, const char lines[], const char nameToAssignToLines[], int32 lineGrouping)
-    #int32 DAQmxBaseCreateCIPeriodChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 edge, int32 measMethod, float64 measTime, uInt32 divisor, const char customScaleName[]);
-    #int32 DAQmxBaseCreateCICountEdgesChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 edge, uInt32 initialCount, int32 countDirection)
-    #int32 DAQmxBaseCreateCIPulseWidthChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 startingEdge, const char customScaleName[])
-    #int32 DAQmxBaseCreateCILinEncoderChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 decodingType, bool32 ZidxEnable, float64 ZidxVal, int32 ZidxPhase, int32 units, float64 distPerPulse, float64 initialPos, const char customScaleName[]);
-    #int32 DAQmxBaseCreateCIAngEncoderChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 decodingType, bool32 ZidxEnable, float64 ZidxVal, int32 ZidxPhase, int32 units, uInt32 pulsesPerRev, float64 initialAngle, const char customScaleName[])
-    #int32 DAQmxBaseCreateCOPulseChanFreq (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 units, int32 idleState, float64 initialDelay, float64 freq, float64 dutyCycle)
-    #int32 DAQmxBaseGetChanAttribute (TaskHandle taskHandle, const char channel[], int32 attribute, void *value)
-    #int32 DAQmxBaseSetChanAttribute (TaskHandle taskHandle, const char channel[], int32 attribute, int32 value)
+    int32 DAQmxBaseCreateAIVoltageChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], int32 terminalConfig, float64 minVal, float64 maxVal, int32 units, const char customScaleName[])
+    int32 DAQmxBaseCreateAIThrmcplChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 thermocoupleType, int32 cjcSource, float64 cjcVal, const char cjcChannel[])
+    int32 DAQmxBaseCreateAOVoltageChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, const char customScaleName[])
+    int32 DAQmxBaseCreateDIChan (TaskHandle taskHandle, const char lines[], const char nameToAssignToLines[], int32 lineGrouping)
+    int32 DAQmxBaseCreateDOChan (TaskHandle taskHandle, const char lines[], const char nameToAssignToLines[], int32 lineGrouping)
+    int32 DAQmxBaseCreateCIPeriodChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 edge, int32 measMethod, float64 measTime, uInt32 divisor, const char customScaleName[])
+    int32 DAQmxBaseCreateCICountEdgesChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 edge, uInt32 initialCount, int32 countDirection)
+    int32 DAQmxBaseCreateCIPulseWidthChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], float64 minVal, float64 maxVal, int32 units, int32 startingEdge, const char customScaleName[])
+    int32 DAQmxBaseCreateCILinEncoderChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 decodingType, bool32 ZidxEnable, float64 ZidxVal, int32 ZidxPhase, int32 units, float64 distPerPulse, float64 initialPos, const char customScaleName[])
+    int32 DAQmxBaseCreateCIAngEncoderChan (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 decodingType, bool32 ZidxEnable, float64 ZidxVal, int32 ZidxPhase, int32 units, uInt32 pulsesPerRev, float64 initialAngle, const char customScaleName[])
+    int32 DAQmxBaseCreateCOPulseChanFreq (TaskHandle taskHandle, const char counter[], const char nameToAssignToChannel[], int32 units, int32 idleState, float64 initialDelay, float64 freq, float64 dutyCycle)
+    int32 DAQmxBaseGetChanAttribute (TaskHandle taskHandle, const char channel[], int32 attribute, void *value)
+    int32 DAQmxBaseSetChanAttribute (TaskHandle taskHandle, const char channel[], int32 attribute, int32 value)
 
     # Timing
     #int32 DAQmxBaseCfgSampClkTiming (TaskHandle taskHandle, const char source[], float64 rate, int32 activeEdge, int32 sampleMode, uInt64 sampsPerChan)
