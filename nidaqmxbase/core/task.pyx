@@ -13,6 +13,8 @@ from nidaqmxbase.utils.wrap_error cimport wrap_error
 # Code
 #-----------------------------------------------------------------------------
 
+__all__ = ['Task']
+
 cdef class Task:
     def __cinit__(self, const char taskName[]=""):
         cdef TaskHandle taskHandle
