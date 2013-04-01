@@ -1,4 +1,4 @@
-"""Ni-DAQmx Base Tasks """
+"""NI-DAQmx Base Tasks """
 
 #-----------------------------------------------------------------------------
 # Cython Imports
@@ -21,9 +21,12 @@ cdef class Task:
         wrap_error(DAQmxBaseCreateTask(taskName, &taskHandle))
         self.handle = taskHandle
 
-    def __init__(self, taskName):
+    def __init__(self, taskName=""):
         pass
 
     def __dealloc__(self):
         wrap_error(DAQmxBaseStopTask(self.handle))
         wrap_error(DAQmxBaseClearTask(self.handle))
+
+    cdef void def start(Task self):
+        wrap_error(DAQmxBaseStartTask(self.taskHandle))

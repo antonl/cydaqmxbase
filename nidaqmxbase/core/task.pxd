@@ -12,5 +12,4 @@ from libnidaqmxbase cimport TaskHandle
 
 cdef class Task:
     """A Ni-DAQmx Task"""
-
-    cdef TaskHandle handle
+    cpdef void start(Task self)
