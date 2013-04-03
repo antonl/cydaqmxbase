@@ -5,7 +5,8 @@
 #-----------------------------------------------------------------------------
 
 from nidaqmxbase.core.libnidaqmxbase cimport (
-    TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStopTask, DAQmxBaseClearTask
+	TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStartTask, DAQmxBaseStopTask,
+	DAQmxBaseClearTask
 )
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
@@ -28,5 +29,5 @@ cdef class Task:
         wrap_error(DAQmxBaseStopTask(self.handle))
         wrap_error(DAQmxBaseClearTask(self.handle))
 
-    cdef void def start(Task self):
-        wrap_error(DAQmxBaseStartTask(self.taskHandle))
+    cdef void start(Task self):
+        wrap_error(DAQmxBaseStartTask(self.handle))

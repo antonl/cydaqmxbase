@@ -4,14 +4,16 @@
 # Cython Imports
 #------------------------------------------------------------------------------
 
-from libnidaqmxbase cimport Task, uInt32
+from nidaqmxbase.core.libnidaqmxbase cimport int32, float64, uInt32, bool32, DAQmx_Val_GroupByChannel
+from nidaqmxbase.core.task import Task
 
 #------------------------------------------------------------------------------
 # Declarations
 #------------------------------------------------------------------------------
 
-cdef class DITask(Task):
+cdef class DITask:#(Task):
     """A NI-DAQmx digital input task"""
 
-    cpdef void add_di_chan(Task self, const char lines[])
-    cpdef uInt32 read(Task self, int32 numSampsPerChan, float64 timeout, uInt32 arraySizeInSamps)
+    cdef void add_di_chan(DITask self, const char lines[])
+    cdef void read(DITask self, int32 numSamples, float64 timeout=*,
+            bool32 fillMode=*)

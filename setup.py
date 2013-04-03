@@ -31,10 +31,14 @@ def pxd(subdir, name):
     return os.path.abspath(os.path.join('nidaqmxbase', subdir, name+'.pxd'))
 
 libnidaqmxbase = pxd('core', 'libnidaqmxbase')
+task = pxd('core', 'task')
 wrap_error = pxd('utils', 'wrap_error')
 
 submodules = dict(
-    core = {'task': [libnidaqmxbase, wrap_error]},
+    core = {
+        'task': [libnidaqmxbase, wrap_error],
+        'dio': [libnidaqmxbase, task, wrap_error]
+    },
     utils = {'wrap_error': [libnidaqmxbase]}
 )
 

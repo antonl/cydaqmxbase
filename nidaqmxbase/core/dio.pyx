@@ -6,26 +6,28 @@
 
 from nidaqmxbase.core.libnidaqmxbase cimport (
     DAQmxBaseCreateDIChan, DAQmxBaseReadDigitalU32,
-    DAQmx_Val_GroupByChannel,
+    DAQmx_Val_GroupByChannel, DAQmx_Val_ChanForAllLines,
     int32, float64, bool32, uInt32
 )
-from nidaqmxbase.core.task cimport Task
+#from nidaqmxbase.core.task cimport Task
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 #-----------------------------------------------------------------------------
 # Code
 #-----------------------------------------------------------------------------
 
-__all__ = ['DITask', 'DOTask']
+__all__ = ['DITask']#, 'DOTask']
 
-cdef class DITask(Task):
-    uInt32 _nchans = 0
+cdef class DITask:#(Task):
+    def __cinit__(DITask self):
+        super(DITask, self).__cinit__()
+        _nchans = 1
 
-    cdef void add_di_chan(Task self, const char lines[]):
+    cdef void add_di_chan(DITask self, const char lines[]):
         wrap_error(DAQmxBaseCreateDIChan(self.handle, lines, "", DAQmx_Val_ChanForAllLines))
-        nchans += 1
+        self._nchans += 1
 
-    cdef uInt32[] read(Task self, int32 numSamples, float64 timeout=10.,
+    cdef void read(DITask self, int32 numSamples, float64 timeout=10.,
             bool32 fillMode=DAQmx_Val_GroupByChannel):
         """
         Read in a single reading from added channels
@@ -51,7 +53,8 @@ cdef class DITask(Task):
             Default: DAQmx_Val_GroupByChannel)
         """
 
-        cdef uInt32 readArray[nchans]
+        #cdef uInt32 readArray[self._nchans]
+        cdef uInt32* readArray
         cdef int32 sampsPerChanRead
 
         if not self._started:
@@ -60,8 +63,8 @@ cdef class DITask(Task):
         wrap_error(DAQmxBaseReadDigitalU32(self.handle, self._nchans, timeout,
             fillMode, readArray, 1, &sampsPerChanRead, NULL))
 
-        return readArray
+        #return readArray
 
 
-cdef class DOTask(Task):
-    pass
+#cdef class DOTask(Task):
+#    pass
