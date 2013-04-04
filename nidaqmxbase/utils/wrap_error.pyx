@@ -5,7 +5,7 @@
 #-----------------------------------------------------------------------------
 
 from nidaqmxbase.core.libnidaqmxbase cimport (
-        DAQmxBaseGetExtendedErrorInfo, DAQmxFailed
+    DAQmxBaseGetExtendedErrorInfo, DAQmxFailed
 )
 
 #-----------------------------------------------------------------------------

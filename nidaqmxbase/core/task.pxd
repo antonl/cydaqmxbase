@@ -4,10 +4,13 @@
 # Cython Imports
 #-----------------------------------------------------------------------------
 
+from nidaqmxbase.core.libnidaqmxbase cimport TaskHandle
+
 #-----------------------------------------------------------------------------
 # Declaration
 #-----------------------------------------------------------------------------
 
 cdef class Task:
     """A Ni-DAQmx Task"""
-    cdef void start(Task self)
+    cpdef TaskHandle handle
+    cpdef start(Task self)

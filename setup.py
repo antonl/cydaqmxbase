@@ -9,6 +9,7 @@ from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
 import os
+import numpy as np
 
 #-----------------------------------------------------------------------------
 # Packages
@@ -50,7 +51,7 @@ for submod, packages in submodules.items():
         ext = Extension(
             'nidaqmxbase.%s.%s' % (submod, pkg),
             sources = sources,
-            include_dirs = [os.path.join('nidaqmxbase', sub) for sub in ('utils','core')],
+            include_dirs = [os.path.join('nidaqmxbase', sub) for sub in ('utils','core')] + [np.get_include()],
             libraries = ["nidaqmxbase"]
         )
         extensions.append(ext)

@@ -29,5 +29,5 @@ cdef class Task:
         wrap_error(DAQmxBaseStopTask(self.handle))
         wrap_error(DAQmxBaseClearTask(self.handle))
 
-    cdef void start(Task self):
+    cpdef start(Task self):
         wrap_error(DAQmxBaseStartTask(self.handle))
