@@ -20,8 +20,8 @@ from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 __all__ = ['DITask']#, 'DOTask']
 
-READ_DTYPE = np.uint32
-ctypedef np.uint32_t READ_DTYPE_t
+DATA_DTYPE = np.uint32
+ctypedef np.uint32_t DATA_DTYPE_t
 
 cdef class DITask(Task):
     def __cinit__(DITask self, const char taskName[]=""):
@@ -47,7 +47,7 @@ cdef class DITask(Task):
         ))
         self._nchans += 1
 
-    cpdef read(DITask self, int32 numSamples, float64 timeout=10.,
+    cpdef np.ndarray read(DITask self, int32 numSamples, float64 timeout=1.,
             bool32 fillMode=DAQmx_Val_GroupByChannel):
         """
         Read in a single reading from added channels
@@ -73,7 +73,8 @@ cdef class DITask(Task):
             Default: DAQmx_Val_GroupByChannel)
         """
 
-        cdef np.ndarray[READ_DTYPE_t,ndim=1] readArray = np.zeros((self._nchans), dtype=READ_DTYPE)
+        cdef np.ndarray[DATA_DTYPE_t,ndim=1] readArray = \
+                np.zeros((self._nchans), dtype=DATA_DTYPE)
         cdef int32 sampsPerChanRead
 
         if not self._started:
@@ -82,7 +83,7 @@ cdef class DITask(Task):
         wrap_error(DAQmxBaseReadDigitalU32(self.handle, self._nchans, timeout,
             fillMode, <uInt32*> readArray.data, 1, &sampsPerChanRead, NULL))
 
-        #return readArray
+        return readArray
 
 
 #cdef class DOTask(Task):
