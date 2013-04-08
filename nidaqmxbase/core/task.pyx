@@ -23,7 +23,7 @@ cdef class Task:
         self.handle = taskHandle
 
     def __init__(self, taskName=""):
-        pass
+        self._started = False
 
     def __dealloc__(self):
         wrap_error(DAQmxBaseStopTask(self.handle))
@@ -31,3 +31,4 @@ cdef class Task:
 
     cpdef start(Task self):
         wrap_error(DAQmxBaseStartTask(self.handle))
+        self._started = 1
