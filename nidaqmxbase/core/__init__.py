@@ -6,5 +6,5 @@ from nidaqmxbase.core.task import *
 from nidaqmxbase.core.dio import *
 
 __all__ = []
-for submod in [task]:
+for submod in [task, dio]:
     __all__.extend(submod.__all__)
