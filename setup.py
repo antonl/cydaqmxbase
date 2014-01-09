@@ -11,6 +11,8 @@ from Cython.Distutils import build_ext
 import os
 import numpy as np
 
+import nidaqmxbase
+
 #-----------------------------------------------------------------------------
 # Packages
 #-----------------------------------------------------------------------------
@@ -67,9 +69,14 @@ includes = [os.path.normpath('/usr/local/natinst/nidaqmxbase/include')]
 #-----------------------------------------------------------------------------
 
 setup(
-    name = "cydaqmxbase",
-    packages = find_packages(),
-    cmdclass = {'build_ext': build_ext},
-    ext_modules = extensions,
-    include_dirs = includes
+    name='cydaqmxbase',
+    version=nidaqmxbase.__version__,
+    description='Cython wrapper for NI-DAQmx Base',
+    author='Sean Vig',
+    author_email='seanvig2@illinois.edu',
+    license='BSD',
+    packages=find_packages(),
+    cmdclass={'build_ext': build_ext},
+    ext_modules=extensions,
+    include_dirs=includes
 )

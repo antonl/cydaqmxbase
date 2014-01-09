@@ -5,6 +5,8 @@ import ctypes
 # This is necessary because of NI library annoyances
 ctypes.CDLL("/usr/local/lib/liblvrtdark.so.12.0", mode=ctypes.RTLD_GLOBAL)
 
+__version__ = "0.0.1"
+
 # Top-level imports
 from nidaqmxbase import core
 from nidaqmxbase import utils
