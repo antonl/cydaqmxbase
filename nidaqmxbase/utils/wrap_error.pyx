@@ -4,7 +4,7 @@
 # Cython imports
 #-----------------------------------------------------------------------------
 
-from nidaqmxbase.core.libnidaqmxbase cimport (
+from nidaqmxbase.external.libnidaqmxbase cimport (
     DAQmxBaseGetExtendedErrorInfo, DAQmxFailed
 )
 

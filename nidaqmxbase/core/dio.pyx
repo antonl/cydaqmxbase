@@ -7,13 +7,13 @@
 import numpy as np
 cimport numpy as np
 
-from nidaqmxbase.core.libnidaqmxbase cimport (
+from nidaqmxbase.core.task cimport Task
+from nidaqmxbase.external.libnidaqmxbase cimport (
     DAQmxBaseCreateDIChan, DAQmxBaseReadDigitalU32,
     DAQmxBaseCreateDOChan, DAQmxBaseWriteDigitalU32,
     DAQmx_Val_GroupByChannel, DAQmx_Val_ChanForAllLines,
     int32, float64, bool32, uInt32
 )
-from nidaqmxbase.core.task cimport Task
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 #-----------------------------------------------------------------------------

@@ -9,6 +9,7 @@ __version__ = "0.0.2-git"
 
 # Top-level imports
 from nidaqmxbase import core
+from nidaqmxbase import external
 from nidaqmxbase import utils
 from nidaqmxbase.core import *
 

@@ -4,7 +4,7 @@
 # Cython Imports
 #-----------------------------------------------------------------------------
 
-from nidaqmxbase.core.libnidaqmxbase cimport (
+from nidaqmxbase.external.libnidaqmxbase cimport (
 	TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStartTask, DAQmxBaseStopTask,
 	DAQmxBaseClearTask
 )

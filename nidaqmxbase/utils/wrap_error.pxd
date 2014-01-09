@@ -4,7 +4,7 @@
 # Cython imports
 #-----------------------------------------------------------------------------
 
-from nidaqmxbase.core.libnidaqmxbase cimport int32
+from nidaqmxbase.external.libnidaqmxbase cimport int32
 
 #-----------------------------------------------------------------------------
 # Declaration

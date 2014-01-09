@@ -4,7 +4,7 @@
 # Cython Imports
 #-----------------------------------------------------------------------------
 
-from nidaqmxbase.core.libnidaqmxbase cimport TaskHandle, bool32
+from nidaqmxbase.external.libnidaqmxbase cimport TaskHandle, bool32
 
 #-----------------------------------------------------------------------------
 # Declaration
