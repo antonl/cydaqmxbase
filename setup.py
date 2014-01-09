@@ -33,7 +33,7 @@ def find_packages():
 def pxd(subdir, name):
     return os.path.abspath(os.path.join('nidaqmxbase', subdir, name+'.pxd'))
 
-libnidaqmxbase = pxd('core', 'libnidaqmxbase')
+libnidaqmxbase = pxd('external', 'libnidaqmxbase')
 task = pxd('core', 'task')
 wrap_error = pxd('utils', 'wrap_error')
 
