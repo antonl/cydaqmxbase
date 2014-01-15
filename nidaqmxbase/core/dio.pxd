@@ -6,7 +6,7 @@
 
 cimport numpy as np
 
-from nidaqmxbase.core.task cimport Task
+from nidaqmxbase.task.task cimport Task
 from nidaqmxbase.external.libnidaqmxbase cimport int32, float64, uInt32, bool32, DAQmx_Val_GroupByChannel
 
 #------------------------------------------------------------------------------

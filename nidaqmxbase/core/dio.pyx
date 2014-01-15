@@ -7,7 +7,7 @@
 import numpy as np
 cimport numpy as np
 
-from nidaqmxbase.core.task cimport Task
+from nidaqmxbase.task.task cimport Task
 from nidaqmxbase.external.libnidaqmxbase cimport (
     DAQmxBaseCreateDIChan, DAQmxBaseReadDigitalU32,
     DAQmxBaseCreateDOChan, DAQmxBaseWriteDigitalU32,
