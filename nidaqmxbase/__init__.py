@@ -10,11 +10,13 @@ __license__ = 'BSD'
 __version__ = '0.0.2-git'
 
 # Top-level imports
-from nidaqmxbase import core
+from nidaqmxbase import dio
 from nidaqmxbase import external
 from nidaqmxbase import task
 from nidaqmxbase import utils
-from nidaqmxbase.core import *
+from nidaqmxbase.dio import *
 from nidaqmxbase.task import *
 
-#__all__ = core.__all__
+__all__ = []
+for submod in [dio, task]:
+    __all__.extend(submod.__all__)
