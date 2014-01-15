@@ -1,1 +1,1 @@
-from dio import DITask, DOTask 
+from nidaqmxbase.dio.dio import DITask, DOTask 

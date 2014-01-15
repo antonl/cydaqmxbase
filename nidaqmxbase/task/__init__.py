@@ -1,1 +1,1 @@
-from task import Task
+from nidaqmxbase.task.task import Task
