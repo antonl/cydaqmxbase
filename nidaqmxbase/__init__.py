@@ -19,4 +19,5 @@ from nidaqmxbase.task import *
 
 __all__ = []
 for submod in [dio, task]:
-    __all__.extend(submod.__all__)
+    pass
+    #__all__.extend(submod.__all__)
