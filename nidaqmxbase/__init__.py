@@ -1,9 +1,14 @@
 """ Python bindings for NiDAQmx Base """
 
 import ctypes
+from ctypes.utils import find_library
 
 # This is necessary because of NI library annoyances
-ctypes.CDLL("/usr/local/lib/liblvrtdark.so.12.0", mode=ctypes.RTLD_GLOBAL)
+lvrtdark = find_library("lvrtdark")
+if lvrtdark:
+    ctypes.CDLL(lvrtdark, mode=ctypes.RTLD_GLOBAL)
+else:
+    raise ImportError("Unable to find LabView Runtime Engine (liblvrtdark)")
 
 from release import author, license, version
 
