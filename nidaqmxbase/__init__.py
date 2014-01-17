@@ -17,13 +17,13 @@ __license__ = license
 __version__ = version
 
 # Top-level imports
-from nidaqmxbase import dio
+from nidaqmxbase import digital
 from nidaqmxbase import external
 from nidaqmxbase import task
 from nidaqmxbase import utils
-from nidaqmxbase.dio import *
+from nidaqmxbase.digital import *
 from nidaqmxbase.task import *
 
 __all__ = []
-for submod in [dio, task]:
+for submod in [digital, task]:
     __all__.extend(submod.__all__)

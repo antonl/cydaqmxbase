@@ -85,7 +85,10 @@ wrap_error = pxd('utils', 'wrap_error')
 
 submodules = {
         'task': {'task': [libnidaqmxbase, wrap_error]},
-        'dio': {'dio': [libnidaqmxbase, task, wrap_error]},
+        'digital': {
+            'di': [libnidaqmxbase, task, wrap_error],
+            'do': [libnidaqmxbase, task, wrap_error]
+        },
         'utils': {'wrap_error': [libnidaqmxbase]}
     }
 
