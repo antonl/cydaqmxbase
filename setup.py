@@ -12,8 +12,6 @@ import os
 import shutil
 import numpy as np
 
-import nidaqmxbase
-
 #-----------------------------------------------------------------------------
 # Packages
 #-----------------------------------------------------------------------------
@@ -85,11 +83,11 @@ libnidaqmxbase = pxd('external', 'libnidaqmxbase')
 task = pxd('task', 'task')
 wrap_error = pxd('utils', 'wrap_error')
 
-submodules = dict(
-    task = {'task': [libnidaqmxbase, wrap_error]},
-    dio = {'dio': [libnidaqmxbase, task, wrap_error]},
-    utils = {'wrap_error': [libnidaqmxbase]}
-)
+submodules = {
+        'task': {'task': [libnidaqmxbase, wrap_error]},
+        'dio': {'dio': [libnidaqmxbase, task, wrap_error]},
+        'utils': {'wrap_error': [libnidaqmxbase]}
+    }
 
 extensions = []
 for submod, packages in submodules.items():
@@ -99,7 +97,7 @@ for submod, packages in submodules.items():
         ext = Extension(
             'nidaqmxbase.%s.%s' % (submod, pkg),
             sources = sources,
-            include_dirs = [os.path.join('nidaqmxbase', sub) for sub in ('utils','core')] + [np.get_include()],
+            include_dirs = [np.get_include()],
             libraries = ["nidaqmxbase"]
         )
         extensions.append(ext)
@@ -114,12 +112,17 @@ includes = [os.path.normpath('/usr/local/natinst/nidaqmxbase/include')]
 # Setup
 #-----------------------------------------------------------------------------
 
+# Get version, author, and license information into global namespace
+with open(os.path.join('nidaqmxbase', 'release.py')) as f:
+    lines = f.read()
+exec(lines, globals())
+
 setup(
     name='cydaqmxbase',
-    version=nidaqmxbase.__version__,
+    version=version,
     description='Cython wrapper for NI-DAQmx Base',
-    author=nidaqmxbase.__author__,
-    license=nidaqmxbase.__license__,
+    author=author,
+    license=license,
     packages=find_packages(),
     cmdclass={'build_ext': build_ext, 'clean': CleanCommand},
     ext_modules=extensions,
