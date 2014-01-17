@@ -15,3 +15,5 @@ cdef class Task:
     cpdef TaskHandle handle
     cdef bool32 _started
     cpdef start(Task self)
+    cpdef stop(Task self)
+    cpdef isDone(Task self)

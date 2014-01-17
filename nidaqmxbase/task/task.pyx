@@ -5,8 +5,9 @@
 #-----------------------------------------------------------------------------
 
 from nidaqmxbase.external.libnidaqmxbase cimport (
-	TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStartTask, DAQmxBaseStopTask,
-	DAQmxBaseClearTask
+    TaskHandle, DAQmxBaseCreateTask, DAQmxBaseStartTask, DAQmxBaseStopTask,
+    DAQmxBaseClearTask, DAQmxBaseIsTaskDone,
+    bool32
 )
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
@@ -26,9 +27,20 @@ cdef class Task:
         self._started = False
 
     def __dealloc__(self):
-        wrap_error(DAQmxBaseStopTask(self.handle))
+        self.stop()
         wrap_error(DAQmxBaseClearTask(self.handle))
 
     cpdef start(Task self):
-        wrap_error(DAQmxBaseStartTask(self.handle))
-        self._started = 1
+        if not self._started:
+            wrap_error(DAQmxBaseStartTask(self.handle))
+            self._started = True
+
+    cpdef stop(Task self):
+        if self._started:
+            wrap_error(DAQmxBaseStopTask(self.handle))
+            self._started = False
+
+    cpdef isDone(Task self):
+        cdef bool32 taskDone
+        wrap_error(DAQmxBaseIsTaskDone(self.handle, &taskDone))
+        return taskDone
