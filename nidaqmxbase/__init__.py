@@ -1,7 +1,7 @@
 """ Python bindings for NiDAQmx Base """
 
 import ctypes
-from ctypes.utils import find_library
+from ctypes.util import find_library
 
 # This is necessary because of NI library annoyances
 lvrtdark = find_library("lvrtdark")
