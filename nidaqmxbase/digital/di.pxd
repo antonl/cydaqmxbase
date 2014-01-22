@@ -21,5 +21,5 @@ cdef class DITask(Task):
     cdef int _nchans
 
     cpdef add_di_chan(DITask self, const char lines[])
-    cpdef np.ndarray read(DITask self, int32 numSamples, float64 timeout=*,
-        bool32 fillMode=*)
+    cpdef np.ndarray read(DITask self, int32 numSamples=*, int32 sampleSize=*,
+            float64 timeout=*, bool32 fillMode=*)
