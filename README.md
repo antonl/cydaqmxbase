@@ -34,3 +34,12 @@ Usage
 
 The CyDAQmxBase library can be imported as `nidaqmxbase`.  See the
 documentation for how to use the library.
+
+
+Testing
+-------
+
+A test suite can be run with pytest, by running `py.test` from the root
+directory. Note that this only tests some auxiliary functions, due to
+complications with testing library function calls. For tests to work, you must
+first run `./setup.py build_ext --inplace`.
