@@ -9,6 +9,12 @@ from nidaqmxbase.external.libnidaqmxbase cimport (
 )
 
 #-----------------------------------------------------------------------------
+# Imports
+#-----------------------------------------------------------------------------
+
+from nidaqmxbase.error import NIDAQmxBaseError
+
+#-----------------------------------------------------------------------------
 # Code
 #-----------------------------------------------------------------------------
 
@@ -17,5 +23,4 @@ cdef inline void wrap_error(int32 error):
 
     if (DAQmxFailed(error)):
         DAQmxBaseGetExtendedErrorInfo(errBuff, 2048)
-        print "DAQmxBase Error %ld: %s" % (error, errBuff)
-        # TODO: raise error
+        raise NIDAQmxBaseError(error, errBuff)

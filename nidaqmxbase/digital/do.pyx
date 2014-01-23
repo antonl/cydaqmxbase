@@ -16,6 +16,12 @@ from nidaqmxbase.external.libnidaqmxbase cimport (
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
 #-----------------------------------------------------------------------------
+# Imports
+#-----------------------------------------------------------------------------
+
+from nidaqmxbase.error import TaskNotStarted
+
+#-----------------------------------------------------------------------------
 # Code
 #-----------------------------------------------------------------------------
 
@@ -84,6 +90,9 @@ cdef class DOTask(Task):
             elapses.
             Default: 1.0
         """
+
+        if not self._started:
+            raise TaskNotStarted()
 
         cdef int32 sampsPerChanWritten
 

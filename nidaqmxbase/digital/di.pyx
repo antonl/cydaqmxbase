@@ -16,6 +16,11 @@ from nidaqmxbase.external.libnidaqmxbase cimport (
 )
 from nidaqmxbase.utils.wrap_error cimport wrap_error
 
+#-----------------------------------------------------------------------------
+# Imports
+#-----------------------------------------------------------------------------
+
+from nidaqmxbase.error import TaskNotStarted
 from nidaqmxbase.utils.parseports import parseports
 
 #-----------------------------------------------------------------------------
@@ -50,7 +55,7 @@ cdef class DITask(Task):
             wrap_error(DAQmxBaseCreateDIChan(
                 self.handle, port, "", DAQmx_Val_ChanForAllLines
             ))
-        self._nchans += len(ports)
+            self._nchans += 1
 
     cpdef np.ndarray read(DITask self, int32 numSamples=DAQmx_Val_Auto, int32
             sampleSize=1, float64 timeout=1., bool32
@@ -84,7 +89,7 @@ cdef class DITask(Task):
         """
 
         if not self._started:
-            return np.array([], dtype=DATA_DTYPE)
+            raise TaskNotStarted()
 
         if numSamples == -1:
             nSamps = self._nchans * sampleSize
