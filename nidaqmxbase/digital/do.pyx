@@ -20,6 +20,7 @@ from nidaqmxbase.utils.wrap_error cimport wrap_error
 #-----------------------------------------------------------------------------
 
 from nidaqmxbase.error import TaskNotStarted
+from nidaqmxbase.utils.parseports import parseports
 
 #-----------------------------------------------------------------------------
 # Code
@@ -49,11 +50,12 @@ cdef class DOTask(Task):
             You can specify a list or range of lines such as the following:
             Dev1/port0:1 or Dev1/port0,Dev1/port2 or Dev1/port0/line0:4
         """
-        wrap_error(DAQmxBaseCreateDOChan(
-            self.handle, lines, "", DAQmx_Val_ChanForAllLines
-        ))
-        # ... not technically correct, may be >1
-        self._nchans += 1
+        ports = parseports(lines)
+        for port in ports:
+            wrap_error(DAQmxBaseCreateDOChan(
+                self.handle, lines, "", DAQmx_Val_ChanForAllLines
+            ))
+            self._nchans += 1
 
     cpdef int32 write(DOTask self, np.ndarray[DATA_DTYPE_t,ndim=1] writeArray,
             int32 numSampsPerChan, bool32 dataLayout=DAQmx_Val_GroupByChannel,
