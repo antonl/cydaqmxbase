@@ -1,5 +1,5 @@
-import task
+from . import task
 
-from task import Task
+from .task import Task
 
 __all__ = ['Task']

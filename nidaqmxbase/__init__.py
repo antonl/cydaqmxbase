@@ -1,4 +1,5 @@
 """ Python bindings for NiDAQmx Base """
+from __future__ import absolute_import
 
 import ctypes
 from ctypes.util import find_library
@@ -7,10 +8,8 @@ from ctypes.util import find_library
 lvrtdark = find_library("lvrtdark")
 if lvrtdark:
     ctypes.CDLL(lvrtdark, mode=ctypes.RTLD_GLOBAL)
-else:
-    raise ImportError("Unable to find LabView Runtime Engine (liblvrtdark)")
 
-from release import author, license, version
+from .release import author, license, version
 
 __author__ = author
 __license__ = license
