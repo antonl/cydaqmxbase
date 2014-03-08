@@ -7,7 +7,10 @@ from ctypes.util import find_library
 # This is necessary because of NI library annoyances
 lvrtdark = find_library("lvrtdark")
 if lvrtdark:
-    ctypes.CDLL(lvrtdark, mode=ctypes.RTLD_GLOBAL)
+    try:
+        ctypes.CDLL(lvrtdark, mode=ctypes.RTLD_GLOBAL)
+    except OSError:
+        pass
 
 from .release import author, license, version
 

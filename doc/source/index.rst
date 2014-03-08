@@ -1,17 +1,17 @@
-.. CyDAQmx Base documentation master file, created by
-   sphinx-quickstart on Sat Mar  8 00:26:30 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to CyDAQmx Base's documentation!
 ========================================
+
+CyDAQmx Base is a Cython wrapper around the National Instruments NI-DAQmx Bsae
+library. This documentation provides basic information about installing CyDAQmx
+Base, refer to the module documentation to see how to use the library.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-
+   install
+   modules/index
 
 Indices and tables
 ==================

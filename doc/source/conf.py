@@ -21,7 +21,7 @@ import os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('../..'))
 
-import nidaqmxbase
+from nidaqmxbase import release
 
 # -- General configuration ------------------------------------------------
 
@@ -34,8 +34,10 @@ import nidaqmxbase
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
+    'numpydoc',
+    'sphinx.ext.autosummary',
 ]
+numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -51,14 +53,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'CyDAQmx Base'
-copyright = '2014, Sean Vig'
+copyright = '2014, %s' % release.author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = nidaqmxbase.__version__
+version = release.version
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -134,7 +136,7 @@ html_theme = 'default'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -150,7 +152,7 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+#html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
