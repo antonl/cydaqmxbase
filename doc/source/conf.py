@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # CyDAQmx Base documentation build configuration file, created by
@@ -34,8 +34,9 @@ from nidaqmxbase import release
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
-    'numpydoc',
+    'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
+    'numpydoc',
 ]
 numpydoc_show_class_members = False
 
@@ -152,7 +153,7 @@ html_theme = 'default'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html']}
+html_sidebars = { '**': ['localtoc.html', 'relations.html', 'searchbox.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

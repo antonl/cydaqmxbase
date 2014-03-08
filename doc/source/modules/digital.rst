@@ -1,6 +1,14 @@
 :mod:`digital`
 ==============
 
+This module provides digital input and output functionality to an NI digital
+I/O card.
+
+.. autosummary::
+
+   nidaqmxbase.digital.DITask
+   nidaqmxbase.digital.DOTask
+
 :class:`DITask`
 ---------------
 
