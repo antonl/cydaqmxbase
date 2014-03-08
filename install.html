@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; CyDAQmx Base 0.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="CyDAQmx Base 0.0.2 documentation" href="index.html" />
+    <link rel="next" title="CyDAQmx Base Modules Reference" href="modules/index.html" />
+    <link rel="prev" title="Welcome to CyDAQmx Base’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modules/index.html" title="CyDAQmx Base Modules Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CyDAQmx Base’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CyDAQmx Base 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>The CyDAQmx Base library has been build and run for Python 2.7 and Cython 0.18,
+running with NI-DAQmx Base 3.7 in a Linux environment.  However any reasonable
+Python (probably &gt;=2.6) and Cython version should work.  If you use the library
+and have any problems with it, please report them on the <a class="reference external" href="https://github.com/flacjacket/cydaqmxbase/issues">issue tracker</a>.</p>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>The primary dependency is the NI-DAQmx Base library.  The driver should be
+downloadable from the <a class="reference external" href="http://www.ni.com/downloads/ni-drivers/">National Instruments drivers page</a>.  The LabView
+Runtime Library engine must be installed such that ldconfig can find it (the
+default installation procedure is sufficient).</p>
+<p>The Python dependencies for this library are Cython and NumPy.  These should
+both be installable using you favorite Python package installation methods
+(pip, easy_install, etc).</p>
+<p>Note that the NI-DAQmx Base library only supplies 32-bit libraries.  This means
+only 32-bit versions of Python will be able to install this library.  These
+likely means you will need a different version than what is supplied with your
+distribution.</p>
+</div>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
+<p>Tagged releases are available from the GitHub <a class="reference external" href="https://github.com/flacjacket/cydaqmxbase/releases">releases</a> page.  It is
+reccomended that you download the most recent tagged tarball.  Exctracting the
+tarball will give you a folder called <tt class="docutils literal"><span class="pre">cydaqmxbase</span></tt>.</p>
+<p>From the <tt class="docutils literal"><span class="pre">cydaqmxbase</span></tt> folder, you can build the library by running:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python setup.py build_ext --inplace
+</pre></div>
+</div>
+<p>This will run the compilation of the Cython modules.  If the compilation runs
+without error, the library is likely good, but you may at this point wish to
+run the small test suite:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ py.test
+</pre></div>
+</div>
+<p>Note that this requires you to have installed <tt class="docutils literal"><span class="pre">pytest</span></tt>.</p>
+<p>You can now install the library, simply by running:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python setup.py install
+</pre></div>
+</div>
+<p>Now, check the module documentation for information on using the CyDAQmx Base
+library.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to CyDAQmx Base&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules/index.html"
+                        title="next chapter">CyDAQmx Base Modules Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modules/index.html" title="CyDAQmx Base Modules Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CyDAQmx Base’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">CyDAQmx Base 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Sean Vig &lt;seanvig2@illinois.edu&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

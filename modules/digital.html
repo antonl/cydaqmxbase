@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>digital &mdash; CyDAQmx Base 0.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="CyDAQmx Base 0.0.2 documentation" href="../index.html" />
+    <link rel="up" title="CyDAQmx Base Modules Reference" href="index.html" />
+    <link rel="prev" title="task" href="task.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="task.html" title="task"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">CyDAQmx Base 0.0.2 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">CyDAQmx Base Modules Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="digital">
+<h1><tt class="xref py py-mod docutils literal"><span class="pre">digital</span></tt><a class="headerlink" href="#digital" title="Permalink to this headline">¶</a></h1>
+<p>This module provides digital input and output functionality to an NI digital
+I/O card.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#nidaqmxbase.digital.DITask" title="nidaqmxbase.digital.DITask"><tt class="xref py py-obj docutils literal"><span class="pre">nidaqmxbase.digital.DITask</span></tt></a></td>
+<td>A NI-DAQmx digital input task</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#nidaqmxbase.digital.DOTask" title="nidaqmxbase.digital.DOTask"><tt class="xref py py-obj docutils literal"><span class="pre">nidaqmxbase.digital.DOTask</span></tt></a></td>
+<td>A NI-DAQmx digital output task</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="ditask">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">DITask</span></tt><a class="headerlink" href="#ditask" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nidaqmxbase.digital.DITask">
+<em class="property">class </em><tt class="descclassname">nidaqmxbase.digital.</tt><tt class="descname">DITask</tt><a class="headerlink" href="#nidaqmxbase.digital.DITask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">nidaqmxbase.task.task.Task</span></tt></p>
+<p>A NI-DAQmx digital input task</p>
+<dl class="method">
+<dt id="nidaqmxbase.digital.DITask.add_di_chan">
+<tt class="descname">add_di_chan</tt><big>(</big><big>)</big><a class="headerlink" href="#nidaqmxbase.digital.DITask.add_di_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add digital input line</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lines</strong> : string</p>
+<blockquote class="last">
+<div><p>The names of the digital lines used to create a virtual channel.
+You can specify a list or range of lines such as the following:
+Dev1/port0:1 or Dev1/port0,Dev1/port2 or Dev1/port0/line0:4</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nidaqmxbase.digital.DITask.read">
+<tt class="descname">read</tt><big>(</big><big>)</big><a class="headerlink" href="#nidaqmxbase.digital.DITask.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read in a single reading from added channels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>numSamples</strong> : int32</p>
+<blockquote>
+<div><p>The number of samples, per channel, to read. The default value of
+-1 (DAQmx_Val_Auto) reads all available data. If readArray does not
+contain enough space, this function returns as much data as fits in
+readArray.  Default: DAQmx_Val_Auto.</p>
+</div></blockquote>
+<p><strong>sampleSize</strong> : int32</p>
+<blockquote>
+<div><p>If numSamples is set to -1, this specifies the maximum number of
+samples to try to collect.  Default: 1.</p>
+</div></blockquote>
+<p><strong>timeout</strong> : float64</p>
+<blockquote>
+<div><p>The amount of time, in seconds, to wait for the function to read
+the sample(s). This function returns an error if the timeout
+elapses.  Default: 10.</p>
+</div></blockquote>
+<p><strong>fillMode</strong> : bool32</p>
+<blockquote class="last">
+<div><p>Specifies whether or not the samples are interleaved.
+DAQmx_Val_GroupByChannel: Group by channel (non-interleaved).
+DAQmx_Val_GroupByScanNumber: Group by scan number (interleaved).
+Default: DAQmx_Val_GroupByChannel)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dotask">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">DOTask</span></tt><a class="headerlink" href="#dotask" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nidaqmxbase.digital.DOTask">
+<em class="property">class </em><tt class="descclassname">nidaqmxbase.digital.</tt><tt class="descname">DOTask</tt><a class="headerlink" href="#nidaqmxbase.digital.DOTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">nidaqmxbase.task.task.Task</span></tt></p>
+<p>A NI-DAQmx digital output task</p>
+<dl class="method">
+<dt id="nidaqmxbase.digital.DOTask.add_do_chan">
+<tt class="descname">add_do_chan</tt><big>(</big><big>)</big><a class="headerlink" href="#nidaqmxbase.digital.DOTask.add_do_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add digital output line</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lines</strong> : string</p>
+<blockquote class="last">
+<div><p>The names of the digital lines used to create a virtual channel.
+You can specify a list or range of lines such as the following:
+Dev1/port0:1 or Dev1/port0,Dev1/port2 or Dev1/port0/line0:4</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="nidaqmxbase.digital.DOTask.write">
+<tt class="descname">write</tt><big>(</big><big>)</big><a class="headerlink" href="#nidaqmxbase.digital.DOTask.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a single value for added channels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>writeArray</strong> : ndarray[np.uint32, ndim=1]</p>
+<blockquote>
+<div><p>The array of 32-bit integer samples to write to the task.</p>
+</div></blockquote>
+<p><strong>numSampsPerChan</strong> : int32</p>
+<blockquote>
+<div><p>The number of samples, per channel, to write. You must pass in a
+value of 0 or more in order for the sample to write. If you pass a
+negative number, this function returns an error.</p>
+</div></blockquote>
+<p><strong>dataLayout</strong> : bool32</p>
+<blockquote>
+<div><p>Specifies how the samples are arranged, either interleaved or non-interleaved.
+DAQmx_Val_GroupByChannel: Group by channel (non-interleaved)
+DAQmx_Val_GroupByScanNumber: Group by sample (interleaved)
+Default: DAQmx_Val_GroupByChannel</p>
+</div></blockquote>
+<p><strong>autoStart</strong> : bool32</p>
+<blockquote>
+<div><p>Specifies whether or not this function automatically starts the
+task if you do not start it. This is used only for static digital
+tasks, otherwise set autoStart to False.
+Default: True</p>
+</div></blockquote>
+<p><strong>timeout</strong> : float64</p>
+<blockquote class="last">
+<div><p>The amount of time, in seconds, to wait for this function to write
+all the samples. This function returns an error if the timeout
+elapses.
+Default: 1.0</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">digital</span></tt></a><ul>
+<li><a class="reference internal" href="#ditask"><tt class="docutils literal"><span class="pre">DITask</span></tt></a></li>
+<li><a class="reference internal" href="#dotask"><tt class="docutils literal"><span class="pre">DOTask</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="task.html"
+                        title="previous chapter"><tt class="docutils literal"><span class="pre">task</span></tt></a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="task.html" title="task"
+             >previous</a> |</li>
+        <li><a href="../index.html">CyDAQmx Base 0.0.2 documentation</a> &raquo;</li>
+          <li><a href="index.html" >CyDAQmx Base Modules Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Sean Vig &lt;seanvig2@illinois.edu&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
