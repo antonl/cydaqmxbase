@@ -4,6 +4,16 @@ CyDAQmxBase
 CyDAQmxBase is a Cython wrapper around the National Instruments
 NI-DAQmx Base driver.
 
+Docs
+----
+
+Some basics for installation and use are given below.  The full documentation
+can be built with Sphinx, from the ``docs`` directory, run::
+
+    $ make html
+
+You can also browse the docs at http://flacjacket.github.io/cydaqmxbase/.
+
 Dependencies
 ------------
 
